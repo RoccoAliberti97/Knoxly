@@ -1,0 +1,18 @@
+input{
+    margin-top:50px;
+}
+p {
+    margin-top:100px;
+    margin-left :380px;
+}
+textarea{
+    margin-left :200px;
+
+}
+span.rosso{
+    border-bottom : 3px solid red;
+    
+}
+span.giallo{
+    border-bottom : 3px solid yellow;
+}
