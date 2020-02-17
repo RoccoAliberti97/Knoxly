@@ -1,0 +1,67 @@
+input{
+    margin-top:50px;
+}
+p {
+    margin-top:100px;
+    margin-left :380px;
+}
+textarea{
+    margin-left :200px;
+
+}
+span.rosso{
+    border-bottom : 3px solid red;
+    cursor: pointer;
+    
+}
+.rosso:hover{
+    background:#ffd5d5;
+}
+span.giallo{
+    border-bottom : 3px solid yellow;
+    cursor: pointer;
+}
+.giallo:hover{
+    background:#ffd5d5;
+}
+.tooltip_knoxly {
+  
+    font-size:15px;
+    width:200px;
+    position: absolute;
+    height:auto;
+    background-color: #bbd1de;;
+    border-radius: 8px;
+    padding: 10px 0px 10px 0px;
+    
+  }
+.tooltip_knoxly .tooltiptext{
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: cursive;
+}
+
+  .tooltip_knoxly .info{
+    list-style: none;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-family: 'Roboto';
+    font-size:14px;
+    
+  }
+  .tooltip_knoxly .anonymity{
+    cursor:pointer;
+    list-style:none;
+    padding-right:10px;
+     padding-left: 10px;
+     font-family: cursive;
+     color: #255784;
+     font-style: normal;
+     font-size: 16px;
+    
+  }
+  
+  .anonymity:hover{
+    background:#0075efa3;
+
+}
