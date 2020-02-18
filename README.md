@@ -1,4 +1,4 @@
-###Knoxly
+# Knoxly
 
 Knoxly is a Google Chrome plugin, to detect automatically sensitive and personal data contained in a text area.
 
