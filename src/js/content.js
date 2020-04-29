@@ -15637,7 +15637,10 @@ let sep = "."
                     title: "Possibile leakage",
                     message: data.text,
                     iconUrl: "../img/knoxly128.png",
-                    requireInteraction: true
+                    requireInteraction: true,
+                    buttons: [
+                        {title: "feedback"}
+                    ]
                 }
                 chrome.runtime.sendMessage({type:"notifications", opt: opt}, function(){})
                 //chrome.notifications.create(opt)
