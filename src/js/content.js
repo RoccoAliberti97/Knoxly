@@ -15632,6 +15632,15 @@ let sep = "."
             statusCode: {
                 200: function(data){
                 console.log(JSON.stringify(data))
+                let opt = {
+                    type: "basic",
+                    title: "Possibile leakage",
+                    message: data.text,
+                    iconUrl: "../img/knoxly128.png",
+                    requireInteraction: true
+                }
+                chrome.runtime.sendMessage({type:"notifications", opt: opt}, function(){})
+                //chrome.notifications.create(opt)
             }
         }
         })

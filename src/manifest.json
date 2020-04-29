@@ -36,14 +36,16 @@
     "cookies",
     "webNavigation",
     "contentSettings",
-    "history"
+    "history",
+    "notifications"
   ],
    
 
   "background": {
     "persistent": true,
     "scripts": [
-      "lib/jquery/jquery-3.4.1.js"
+      "lib/jquery/jquery-3.4.1.js",
+      "js/background.js"
       
     ]
   }
