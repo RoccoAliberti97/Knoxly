@@ -15445,10 +15445,8 @@ $(document).ready(function(){
         "z","zero"
     ];
 
-
     // funzione per sottolineare      
     function hightLight(div) {
-       
 
         var className = $(div).attr('class');
         //console.log("Class:" + className);
@@ -15611,9 +15609,35 @@ $('body').on('mouseover','.Ar.Au',function(){
 
 
 //funzione per trovare nel testo di input dati PII,QI,SD
+let lastSep = 0
+let start = 0
 
- function getInput(el,text){
-    
+function getInput(el,text){
+const isSemi = text.includes(';',lastSep)
+const isQmark = text.includes('?',lastSep)
+const isDot = text.includes('.',lastSep)
+const isScalar = text.includes('!',lastSep)
+let sep = "."
+    if(isSemi || isQmark || isDot || isScalar){
+        if(isSemi) sep = ";"; else if(isQmark) sep = "?"; else if(isScalar) sep = "!"
+        lastSep = text.indexOf(sep, lastSep)
+        let str = text.substring(start, lastSep)
+        lastSep++
+        start = lastSep
+        $.ajax({
+            type: 'POST',
+            url: 'http://127.0.0.1:8000/sendtxt',
+            data: JSON.stringify({"text": str}),
+            contentType: 'application/json',
+            statusCode: {
+                200: function(data){
+                console.log(JSON.stringify(data))
+            }
+        }
+        })
+        //console.log(JSON.stringify({"text": str}))
+    }
+
         wordsPII = new Array();
         wordsSD = new Array();
         telefoni = new Array();
