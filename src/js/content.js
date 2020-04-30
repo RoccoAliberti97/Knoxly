@@ -15639,7 +15639,8 @@ let sep = "."
                     iconUrl: "../img/knoxly128.png",
                     requireInteraction: true,
                     buttons: [
-                        {title: "feedback"}
+                        {title: "feedback+"},
+                        {title: "feedback-"},
                     ]
                 }
                 chrome.runtime.sendMessage({type:"notifications", opt: opt}, function(){})
