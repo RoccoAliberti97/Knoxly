@@ -39,7 +39,6 @@
     "history",
     "notifications"
   ],
-   
 
   "background": {
     "persistent": true,

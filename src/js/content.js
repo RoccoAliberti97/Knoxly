@@ -15624,6 +15624,7 @@ let sep = "."
         let str = text.substring(start, lastSep)
         lastSep++
         start = lastSep
+        if(text.length>5)
         $.ajax({
             type: 'POST',
             url: 'http://127.0.0.1:8000/sendtxt',

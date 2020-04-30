@@ -2,22 +2,24 @@ let c=0
 let idNotify = "notify-"+c
 chrome.runtime.onMessage.addListener(function(req, sender, sendRes){
     if(req.type === 'notifications'){
-        chrome.notifications.create(idNotify, req.opt, function(){})
+            //chrome.browserAction.setBadgeText({"text": c+""}, function(){}) per attivare il badge 
 
+    chrome.notifications.create(idNotify, req.opt, function(){
         chrome.notifications.onButtonClicked.addListener(function(id,btn){
-            const isNotify = id == "notify-"+c
-            
+            const isNotify = id == "notify-"+c           
             if(isNotify && btn == 0){
                 alert("feedback positivo"+c)
             }else{
-                if(isNotify && btn ==1){
+                if(isNotify && btn == 1){
                     alert("feedback negativo"+c)
                 }
             }   
             c++  
             idNotify = "notify-"+c
         })
-       
+    })
+        
     }
+    return true //this fix unchecked runtime.lastError
 })
 
