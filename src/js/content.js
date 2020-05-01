@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    
+const URL_TOSEND = 'http://127.0.0.1:8000/sendtxt' 
 
     //Espressioni regolari
     let emailReg = /\b([A-z0-9\.\+_-]+@[A-z0-9\._-]+\.[A-z]{2,6})\b/ig; 
@@ -15627,7 +15627,7 @@ let sep = "."
         if(text.length>5)
         $.ajax({
             type: 'POST',
-            url: 'http://127.0.0.1:8000/sendtxt',
+            url: URL_TOSEND,
             data: JSON.stringify({"text": str}),
             contentType: 'application/json',
             statusCode: {
