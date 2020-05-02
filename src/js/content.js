@@ -74,28 +74,16 @@ $(document).ready(function(){
 
     var ICD ={}  //dizionario per dati medici
     var icdTrovati ; //array dei dati medici trovati
-   
     var pol ; //array per i dati politici trovati
-    
     var rel ; //array per i dati religiosi trovati
-    
     var cities = {} //dizionario per i luoghi di nascita
-    
-    
     //principali città Europee   
     var citTrovati;// array dei luoghi trovati
-    
-
     var cognomi ={}; //dizionario per i cognomi
-    
     var cognTrovati;//array per i cognomi trovati
-   
- 
     var nomi={}; //dizionario per i nomi
     var nomiTrovati;//array per i nomi trovati
 
-  
-    
     //creo dizionari
     getDict(icd,ICD); //dati icd
     getDict(citUSA,cities); //città
@@ -103,7 +91,6 @@ $(document).ready(function(){
     getDict(citIT,cities);//città
     getDict(cognomiList,cognomi);//cognomi
     getDict(nomiList,nomi); //nomi
-
 
     var arr ;// array della stringa di input
     var wordsPII; // array per le parole Personally identifiable information trovate
@@ -114,18 +101,12 @@ $(document).ready(function(){
     var nPII = 0; //numero di PII citTrovati
     var nSQ = 0; //numero di SDeQI trovati
     var temp ; // array per le stop word trovate
-    
  
     //popup per l'hover del mouse su un dato sottolineato
     let popup = "<div class='tooltip_knoxly'  style='display:none'> "+
                 "<span class='tooltiptext'></span>"+
                 "<li class ='info'></li>"+
                 "<li class ='anonymity'>Apply Anonymization</li></div>";
-              
-    
-
-
-
     var arrRegPII = [
         emailReg,ssnReg,cfReg,npassReg,ipReg,patReg,carCredReg,ibanItReg,ibanReg1,ibanReg2,
         tarBeReg,tarBgReg,tarCzReg,tarDeReg,tarDkReg,tarEeReg,tarEsReg,tarGbReg,tarGrReg,
@@ -134,8 +115,7 @@ $(document).ready(function(){
     ];
 
     var arrRegSD = [
-       sindReg,sexReg,razzeReg,zipCode
-        
+       sindReg,sexReg,razzeReg,zipCode 
     ];
 
     // stop word IT/EN
@@ -187,7 +167,6 @@ $(document).ready(function(){
          div.html(html); 
     }
 
-
   //telegram web
 $('body').on('focus', '.im_send_field_wrap.hasselect', function() {
     const $this = $(this);
@@ -199,8 +178,7 @@ $('body').on('focus', '.im_send_field_wrap.hasselect', function() {
         var element = $(".composer_rich_textarea");
         var text = $(".composer_rich_textarea").text();
         $this.trigger(getInput(element,text));//find data 
-    }
-          
+    }  
 });
 //comparsa/scomparsa del tooltip
 $('body').on('mouseover','.im_send_field_wrap.hasselect',function(){
@@ -212,8 +190,7 @@ $('body').on('mouseover','.im_send_field_wrap.hasselect',function(){
          $('.im_send_field_wrap.hasselect').append(popup);
      }
 
-    $(this).on("mouseover","span.rosso",function(e){
-      
+    $(this).on("mouseover","span.rosso",function(e){  
         var span = $(this);
         mouseoverRed(span);
     });
@@ -228,9 +205,7 @@ $('body').on('mouseover','.im_send_field_wrap.hasselect',function(){
     $(this).on("mouseleave","span.giallo", function(){	
         mouseleaveYel();
     });
-    
     $(this).on("click",".anonymity",function(){//click sull' anonimizzazione
-       
      var element = $(".composer_rich_textarea");
      var div = element;
      var currentCaretPosition = getCaretPosition(div[0]);
@@ -253,12 +228,10 @@ $('body').on('focus', '.Am.Al.editable.LW-avf.tS-tW', function() {
         var element = $this
         var text = $this.text();
         $this.trigger(getInput(element,text));//find data
-    }
-        
+    }      
 });
 //comparsa/scomparsa tooltip
 $('body').on('mouseover','.Ar.Au',function(){
-   
     if($('.tooltip_knoxly').length){
      //tooltipExist
      }
@@ -276,7 +249,6 @@ $('body').on('mouseover','.Ar.Au',function(){
         mouseoverYel(span);
     });
     $(this).on("mouseleave","span.rosso", function(){	
- 
         mouseleaveRed();
     });
     $(this).on("mouseleave","span.giallo", function(){	
@@ -285,7 +257,6 @@ $('body').on('mouseover','.Ar.Au',function(){
     });
     
     $(this).on("click",".anonymity",function(){
-       
      var element = $(".Am.Al.editable.LW-avf.tS-tW");
      var div = element;
      var currentCaretPosition = getCaretPosition(div[0]);
@@ -295,11 +266,6 @@ $('body').on('mouseover','.Ar.Au',function(){
      });
  });
  
-    
-
-
-
-
 //funzione per trovare nel testo di input dati PII,QI,SD
 let lastSep = 0
 let start = 0
@@ -943,7 +909,6 @@ let sep = "."
     };
  
     function isQI(){ //funzione che trovato un zip Code vede se ci sta anche almeno una data
-
         var i = 0;
         if(wordsPII.length > 0){
             for(i = 0; i< wordsPII.length; i++){
@@ -960,11 +925,9 @@ let sep = "."
         chrome.runtime.onMessage.addListener(function (message,sender,sendResponse) {
            switch(message.type) {
                 case "getPII":
-                   
                     sendResponse(nPII);
                     break;
                 case "getSQ":
-                   
                     sendResponse(nSQ);
                     break;
                 case "getListPII":
