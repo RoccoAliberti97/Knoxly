@@ -1,37 +1,39 @@
 {
-    "manifest_version": 2,
-    "name": "Knoxly",
-    "description": "Descrizione per la nostra nuova app chrome",
-    "version": "0.0.0.2",
-    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-
-    "icons": {
-      "128":"img/knoxly128.png"
+  "manifest_version": 2,
+  "name": "Knoxly",
+  "description": "Descrizione per la nostra nuova app chrome",
+  "version": "0.0.0.2",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "icons": {
+    "128": "img/knoxly128.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "128": "img/knoxly128.png"
     },
-    "browser_action": {
-      "default_icon":{
-        "128":"img/knoxly128.png"
-      },
-      "default_title": "Knoxly",
-      "default_popup": "score.html"
- 
+    "default_title": "Knoxly",
+    "default_popup": "score.html"
   },
   "content_scripts": [
     {
       "all_frames": true,
-      "js": [ "lib/jquery/jquery-3.4.1.js","js/content.js"],
-      "css":["css/index.css"],
+      "js": [
+        "lib/jquery/jquery-3.4.1.js",
+        "js/content.js"
+      ],
+      "css": [
+        "css/index.css"
+      ],
       "matches": [
         "http://*/*",
         "https://*/*"
       ]
-    } 
+    }
   ],
-
   "web_accessible_resources": [
-    "js/host.json", "dict/*.json" 
+    "js/host.json",
+    "dict/*.json"
   ],
-
   "permissions": [
     "*://*/*",
     "storage",
@@ -44,13 +46,11 @@
     "history",
     "notifications"
   ],
-
   "background": {
     "persistent": true,
     "scripts": [
       "lib/jquery/jquery-3.4.1.js",
       "js/background.js"
-      
     ]
   }
 }

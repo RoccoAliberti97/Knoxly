@@ -9,15 +9,6 @@ function loadDict(toLoad){
     return tmp
 }
 
-const icd = loadDict('../dict/icd.json')
-const ideolPol = loadJSON('../dict/ideolPol.json') //dizionario delle ideologie politiche
-const religioni = loadJSON('../dict/religioni.json')//dizionario delle principali religioni
-const citUSA = loadDict('../dict/citUSA.json')
-const citIT = loadDict('../dict/citIT.json')
-const citEU = loadDict('../dict/citEU.json')
-const cognomiList = loadDict('../dict/cognomi.json')//i primi 1000 cognomi più diffusi nell' USA e in Italia
-const nomiList = loadDict('../dict/nomi.json')
-
 function loadJSON(toLoad){
     let tmp
     $.ajax({
@@ -28,7 +19,17 @@ function loadJSON(toLoad){
     })
     return tmp
 }
+
+const icd = loadDict('../dict/icd.json')
+const ideolPol = loadJSON('../dict/ideolPol.json') //dizionario delle ideologie politiche
+const religioni = loadJSON('../dict/religioni.json')//dizionario delle principali religioni
+const citUSA = loadDict('../dict/citUSA.json')
+const citIT = loadDict('../dict/citIT.json')
+const citEU = loadDict('../dict/citEU.json')
+const cognomiList = loadDict('../dict/cognomi.json')//i primi 1000 cognomi più diffusi nell' USA e in Italia
+const nomiList = loadDict('../dict/nomi.json')
 const URL = loadJSON('js/host.json').url
+
 $(document).ready(function(){
     //Espressioni regolari
     let emailReg = /\b([A-z0-9\.\+_-]+@[A-z0-9\._-]+\.[A-z]{2,6})\b/ig; 
@@ -296,10 +297,7 @@ let sep = "."
                                     message: data.text,
                                     iconUrl: "../img/knoxly128.png",
                                     requireInteraction: true,
-                                    buttons: [
-                                        {title: "feedback+"},
-                                        {title: "feedback-"},
-                                    ]
+                                    buttons: [{title: "feedback+"},{title: "feedback-"}]
                                 }
                                 chrome.runtime.sendMessage({type:"notifications", opt: opt}, function(){})
                 }//fine success
