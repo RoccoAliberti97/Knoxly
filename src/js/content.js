@@ -1,5 +1,4 @@
 $(document).ready(function(){
-const URL_TOSEND = 'http://127.0.0.1:8000/sendtxt' 
 
     //Espressioni regolari
     let emailReg = /\b([A-z0-9\.\+_-]+@[A-z0-9\._-]+\.[A-z]{2,6})\b/ig; 
@@ -15624,32 +15623,41 @@ let sep = "."
         let str = text.substring(start, lastSep)
         lastSep++
         start = lastSep
-        if(text.length>5)
-        $.ajax({
-            type: 'POST',
-            url: URL_TOSEND,
-            data: JSON.stringify({"text": str}),
-            contentType: 'application/json',
-            statusCode: {
-                200: function(data){
-                console.log(JSON.stringify(data))
-                let opt = {
-                    type: "basic",
-                    title: "Possibile leakage",
-                    message: data.text,
-                    iconUrl: "../img/knoxly128.png",
-                    requireInteraction: true,
-                    buttons: [
-                        {title: "feedback+"},
-                        {title: "feedback-"},
-                    ]
+        if(text.length>5){
+            $.ajax({
+                type: 'GET',
+                url: chrome.runtime.getURL('js/host.json'),
+                statusCode : {
+                    200: function(hostfile){
+                        $.ajax({
+                            type: 'POST',
+                            url: hostfile.url,
+                            data: JSON.stringify({"text": str}),
+                            contentType: 'application/json',
+                            statusCode: {
+                                200: function(data){
+                                console.log(JSON.stringify(data))
+                                let opt = {
+                                    type: "basic",
+                                    title: "Possibile leakage",
+                                    message: data.text,
+                                    iconUrl: "../img/knoxly128.png",
+                                    requireInteraction: true,
+                                    buttons: [
+                                        {title: "feedback+"},
+                                        {title: "feedback-"},
+                                    ]
+                                }
+                                chrome.runtime.sendMessage({type:"notifications", opt: opt}, function(){})
+                                //chrome.notifications.create(opt)
+                            }
+                        }
+                        })//fine ajax
+                    }
                 }
-                chrome.runtime.sendMessage({type:"notifications", opt: opt}, function(){})
-                //chrome.notifications.create(opt)
-            }
-        }
-        })
-        //console.log(JSON.stringify({"text": str}))
+            })//ajax get url
+        
+    }//fine if
     }
 
         wordsPII = new Array();

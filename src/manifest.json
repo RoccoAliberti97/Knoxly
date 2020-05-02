@@ -27,6 +27,11 @@
       ]
     } 
   ],
+
+  "web_accessible_resources": [
+    "js/host.json"
+  ],
+
   "permissions": [
     "*://*/*",
     "storage",
