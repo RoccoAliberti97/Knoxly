@@ -1,8 +1,9 @@
 let c=0
+let badgeCount=''
 let idNotify = "notify-"+c
-chrome.runtime.onMessage.addListener(function(req, sender, sendRes){
+chrome.runtime.onMessage.addListener(function(req){
     if(req.type === 'notifications'){
-            //chrome.browserAction.setBadgeText({"text": c+""}, function(){}) per attivare il badge 
+            chrome.browserAction.setBadgeText({"text": badgeCount}, function(){}) //per attivare il badge 
 
     chrome.notifications.create(idNotify, req.opt, function(){
         chrome.notifications.onButtonClicked.addListener(function(id,btn){
@@ -16,6 +17,8 @@ chrome.runtime.onMessage.addListener(function(req, sender, sendRes){
             }   
             c++  
             idNotify = "notify-"+c
+            badgeCount = parseInt(badgeCount)
+            badgeCount++
         })
     })
         

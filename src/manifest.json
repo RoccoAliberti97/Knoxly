@@ -32,7 +32,8 @@
   ],
   "web_accessible_resources": [
     "js/host.json",
-    "dict/*.json"
+    "dict/*.json",
+    "img/badge.png"
   ],
   "permissions": [
     "*://*/*",

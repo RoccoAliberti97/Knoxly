@@ -4,37 +4,50 @@
 		<meta charset="utf-8">
         <title>Knoxly</title>
         <link rel="stylesheet" type="text/css" href="css/score.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-         <script src="lib/jquery/jquery-3.4.1.js"></script>
-        <script type="text/javascript" src="js/score.js"></script>
+        <script src="lib/jquery/jquery-3.4.1.js"></script>
+        <!--Conta quante parole sono state evidenziate e le mette nei cerchi
+            <script type="text/javascript" src="js/score.js"></script>-->
 
-        <style>		
-			body{font: 10px arial;}			
-		</style>
+        <!--<style>		
+            body{font: 10px arial;}			
+		</style>-->
 		
     </head>
-    <body >
-        <div class="pannello">
-            <div class="parte_superiore">
-                <img id="logo" src="img/knoxly_testo.png" alt="Knoxly Logo">
-			</div>
-
-                <div class="wrapper">
-                    <div class="row pt-5 pb-5">
-                        <div class="col-6 col-sm-3">
-                            <div class="counter" data-cp-percentage="100" data-cp-color="red"></div>
-                        </div>
-                    
-                        <div class="col-6 col-sm-3">
-                            <div class="counter" data-cp-percentage="100" data-cp-color="yellow"></div>
-                        </div>
-                    </div>
-                </div>
-			<div class = "parte_inferiore">
-				<ul class = "list-group">
-				</ul>
-			</div>
-        </div>
+    <body class ="col-lg=12">
+			<div class = "col-lg=12">
+				<table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col" style="text-align: center">Frase</th>
+                        <th scope="col" style="text-align: center">Badge</th>
+                        <th scope="col" style="text-align: center">Feedback</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td scope="row">Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum.	</th>
+                        <td><img src="img/knoxly128.png"></td>
+                        <td style="text-align: center;"><button type="button" class="btn btn-secondary btn-sm .btn-block">feedback</button></td>
+                      </tr>
+                      <tr>
+                        <td scope="row">Sono Alfredo e vivo a Bologna</th>
+                        <td><img src="img/knoxly128.png"></td>
+                        <td style="text-align: center;"><button type="button" class="btn btn-secondary btn-sm .btn-block">feedback</button></td>
+                      </tr>
+                      <tr>
+                        <td scope="row">Sono Alfredo e vivo a Bologna</th>
+                        <td><img src="img/knoxly128.png"></td>
+                        <td style="text-align: center;"><button type="button" class="btn btn-secondary btn-sm .btn-block">feedback</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+            
+            <div class="col-lg=12" style="background: yellowgreen; text-align: center; height: 25px;">
+                <a href="https://www.w3schools.com" style="font-size: medium;">Visita W3C</a>
+            </div>
 
     </body>
     
