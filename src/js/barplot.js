@@ -1,25 +1,25 @@
 document.addEventListener('DOMContentLoaded', function () {
     Highcharts.chart('container', {
         chart: {
-            type: 'bar'
+            type: 'column'
         },
         title: {
-            text: 'Fruit Consumption'
+            text: 'Di cosa parli'
         },
         xAxis: {
-            categories: ['Apples', 'Bananas', 'Oranges']
+            categories: ['P', 'H', 'J', 'T', 'G']
         },
         yAxis: {
-            title: {
-                text: 'Fruit eaten'
-            }
+            /*title: {
+                text: 'Occorrenza'
+            }*/
+        },
+        tooltip: {
+            enabled: false
         },
         series: [{
-            name: 'Jane',
-            data: [1, 0, 4]
-        }, {
-            name: 'John',
-            data: [5, 7, 3]
+            name: 'Occorrenza',
+            data: [1, 16, 4, 24, 5]
         }],
     });
 });

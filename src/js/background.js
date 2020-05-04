@@ -11,8 +11,13 @@ chrome.runtime.onMessage.addListener(function(req){
         listOfTxt.splice(req.opt.toRemove,1) 
         if(listOfTxt.length == 0) chrome.storage.sync.set({"listOfTxt": ""}, function(){})
         else  chrome.storage.sync.set({"listOfTxt": listOfTxt}, function(){})
-        console.log(listOfTxt)
         setBadgeText(--c)
+    }
+    if(req.type === 'rmvAll'){
+        listOfTxt = []
+        c = 0
+        chrome.storage.sync.set({"listOfTxt": ""}, function(){})
+        setBadgeText(c)
     }
     return true
 })
