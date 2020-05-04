@@ -291,15 +291,7 @@ let sep = "."
                 contentType: 'application/json',
                 success: function(data){
                     console.log(JSON.stringify(data))
-                                let opt = {
-                                    type: "basic",
-                                    title: "Possibile leakage",
-                                    message: data.text,
-                                    iconUrl: "../img/knoxly128.png",
-                                    requireInteraction: true,
-                                    buttons: [{title: "feedback+"},{title: "feedback-"}]
-                                }
-                                chrome.runtime.sendMessage({type:"notifications", opt: opt}, function(){})
+                    chrome.runtime.sendMessage({type:"notifications", opt: data}, function(){})
                 }//fine success
             })//fine ajax
     }//fine if
