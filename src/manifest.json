@@ -51,7 +51,7 @@
     "persistent": true,
     "scripts": [
       "lib/jquery/jquery-3.4.1.js",
-      "js/background.js"
+      "js/background.js", "js/tbl.js"
     ]
   }
 }
