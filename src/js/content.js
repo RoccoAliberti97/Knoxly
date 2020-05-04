@@ -291,7 +291,7 @@ let sep = "."
                 contentType: 'application/json',
                 success: function(data){
                     console.log(JSON.stringify(data))
-                    chrome.runtime.sendMessage({type:"notifications", opt: data}, function(){})
+                    chrome.runtime.sendMessage({type:"additem", opt: data}, function(){})
                 }//fine success
             })//fine ajax
     }//fine if

@@ -50,7 +50,7 @@
   "background": {
     "persistent": true,
     "scripts": [
-      "lib/jquery/jquery-3.4.1.js",
+      "lib/jquery/jquery-3.4.1.js", "lib/highchart.js",
       "js/background.js", "js/tbl.js"
     ]
   }

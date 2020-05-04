@@ -8,6 +8,7 @@ function loadFromStorage(){
             sendFeedback()
         }
     })
+    return true
 }
 
 function addRow(txt, img, id){
@@ -23,28 +24,15 @@ function sendFeedback(){
     let l = btnList.length
     for(let i = 0; i < l; i++){
         btnList[i].onclick = function (){
-            chrome.storage.sync.get(['listOfTxt'], function(res){
-                let listOfTxt = res.listOfTxt
-                listOfTxt.splice(i,1)
+                itemToRemove = $("#row"+i).find("td:first").text()
                 $("#row"+i).remove()
-                if(listOfTxt.length == 0)afterFeedback(""); else afterFeedback(listOfTxt)
-                /*
-                 *   TODO invio feedback per personalizzare
+                chrome.runtime.sendMessage({type:"rmvitem", opt: {toRemove: i}}, function(){})
+                /**
+                 * TODO aggiugere invio feedback
                  */
-            })
-        }
     }
 }
-
-function afterFeedback(toStore){
-    chrome.storage.sync.set({"listOfTxt": toStore}, function(){
-        chrome.browserAction.getBadgeText({}, function(badgeTxt){
-            let badgeNum = parseInt(badgeTxt)
-            badgeNum--
-            if(badgeNum >=1) chrome.browserAction.setBadgeText({text: badgeNum+""}, function(){});
-            else chrome.browserAction.setBadgeText({text: ""}, function(){})
-        })
-    })
+return true
 }
 
 loadFromStorage()
