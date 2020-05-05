@@ -25,10 +25,9 @@ function sendFeedback(){
     let l = btnList.length
     for(let i = 0; i < l; i++){
         btnList[i].onclick = function (){
-                itemToRemove = $("#row"+i).find("td:first").text()
-                $("#row"+i).remove()
                 chrome.runtime.sendMessage({type:"rmvitem", opt: {toRemove: i}}, function(){})
-                if(btnList.length == 0)         $("#tblfoot").css("visibility", "hidden")
+                $("#row"+i).remove()
+                if(btnList.length == 0)$("#tblfoot").css("visibility", "hidden")
 
                 /**
                  * TODO aggiugere invio feedback
