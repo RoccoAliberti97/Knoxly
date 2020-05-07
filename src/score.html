@@ -7,14 +7,25 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <script src="lib/jquery/jquery-3.4.1.js" defer></script>
-        <script src="lib/highchart.js" defer></script>
-        <script src= "js/barplot.js" defer></script>
-    </head>
-    <body class ="col-lg=12">
-      <div id = "container" class ="col-lg=12">
+        <script src="lib/highcharts.js" defer></script>
+        <script src="js/barplot.js" defer></script>
+        <script src="js/tbl.js" defer></script>
+        <script src="js/tabManager.js" defer></script>
         
-      </div> 
-			<div class = "col-lg=12">
+
+    </head>
+    <body>
+      <div style="text-align: center;"><img src="img/banner.png" style="height: 125px;"></div>
+      <table class="table">
+        <tr>
+          <td> <button id = "analysisTab" class="btn btn-light" style="color: #6da9e8;"> Analysis</button></td>
+          <td> <button id="statTab" class="btn btn-light" style="color: #6da9e8;"> Statistics </button></td>
+          <td> <button id="aboutTab" class="btn btn-light" style="color: #6da9e8;"> About </button> </td>
+        </tr>
+      </table>
+
+
+      <div id="contentepage">			
 				<table class="table">
                     <thead class="thead-dark">
                       <tr>
@@ -30,12 +41,15 @@
                       <tr><td colspan="3" style="text-align: center"> <button id="clearTbl" class="btn btn-info btn-sm btn-block">Cancella tutto</button>  </td></tr>
                     </tfoot>
                   </table>
-            </div>
             
-            <div class="col-lg=12" style="background: yellowgreen; text-align: center; height: 25px;">
-                <a href="https://www.w3schools.com" style="font-size: medium;">Visita W3C</a>
-            </div>
+          </div>
+            
 
     </body>
-    <script src="js/tbl.js" defer></script>
+    <footer>
+      <div style="background: yellowgreen; text-align: center; height: 25px;">
+        <a href="https://www.w3schools.com" style="font-size: medium;">Visita W3C</a>
+    </div>
+    </footer>
+    
 </html>

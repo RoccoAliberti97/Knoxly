@@ -5,11 +5,11 @@
   "version": "0.0.0.2",
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "icons": {
-    "128": "img/knoxly128.png"
+    "16": "img/logo16.png"
   },
   "browser_action": {
     "default_icon": {
-      "128": "img/knoxly128.png"
+      "16": "img/logo16.png"
     },
     "default_title": "Knoxly",
     "default_popup": "score.html"
@@ -32,8 +32,7 @@
   ],
   "web_accessible_resources": [
     "js/host.json",
-    "dict/*.json",
-    "img/badge.png"
+    "dict/*.json"
   ],
   "permissions": [
     "*://*/*",
@@ -50,8 +49,8 @@
   "background": {
     "persistent": true,
     "scripts": [
-      "lib/jquery/jquery-3.4.1.js", "lib/highchart.js",
-      "js/background.js", "js/tbl.js"
+      "lib/jquery/jquery-3.4.1.js",
+      "js/background.js"
     ]
   }
 }

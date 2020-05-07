@@ -4,7 +4,7 @@ function loadFromStorage(){
             let listOfTxt = res.listOfTxt
             const l = listOfTxt.length
             for(let i = 0; i < l; i++)
-                $("#tbl").append(addRow(listOfTxt[i].text,"img/knoxly128.png","row"+i))
+                $("#tbl").append(addRow(listOfTxt[i].text,"img/knoxly32.png","row"+i))
             sendFeedback()
             $("#tblfoot").css("visibility", "visible")
         }
@@ -28,7 +28,6 @@ function sendFeedback(){
                 chrome.runtime.sendMessage({type:"rmvitem", opt: {toRemove: i}}, function(){})
                 $("#row"+i).remove()
                 if(btnList.length == 0)$("#tblfoot").css("visibility", "hidden")
-
                 /**
                  * TODO aggiugere invio feedback
                  */
