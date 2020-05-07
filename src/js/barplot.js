@@ -28,9 +28,7 @@ function loadBarPlot(){
 
 function loadOverall(){
     chrome.storage.sync.get(['avg'], function(res){
-        let val = parseFloat(res.avg.toFixed(2))
-        let color = chooseColor(val)
-        
+        const val = parseFloat(res.avg.toFixed(2))   
         Highcharts.chart('overall', {
             chart: {
                 plotBackgroupColor: null,
@@ -55,7 +53,7 @@ function loadOverall(){
                     animation: false
                 }
             },
-            colors: [color],
+            colors: [chooseColor(val)],
             series: [{
                 data: [{
                     name: "overall",
@@ -68,8 +66,9 @@ function loadOverall(){
 
 function chooseColor(sens){
     let color = ""
-    if(sens >= 0 && sens <= 0.33) color="#66FF55"
-    else if(sens >= 0.34 && sens <= 0.66) color = "#FFFF66"
-    else if(sens >= 0.67 && sens <= 1) color = "#FF6666"
+    if(sens >= 0 && sens <= 0.25) color="#2ecc71"
+    else if(sens >= 0.26 && sens <= 0.50) color = "#f1c40f"
+    else if(sens >= 0.51 && sens <= 0.75) color = "#e67e22"
+    else if(sens >= 0.76 && sens <= 1) color = "e74c3c"
     return color
 }
