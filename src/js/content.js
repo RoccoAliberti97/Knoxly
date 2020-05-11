@@ -290,8 +290,15 @@ let sep = "."
                 data: JSON.stringify({"text": str}),
                 contentType: 'application/json',
                 success: function(data){
-                    console.log(JSON.stringify(data))
-                    chrome.runtime.sendMessage({type:"additem", opt: data}, function(){})
+                    console.log(data.sensList+"\t"+data.text+"\t"+data.topicList)
+                    let embed_pt1 = [], embed_pt2 = []//data.embed[0]
+                    const l = data.embed[0].length/2
+                    for(let i = 0; i<l; i++) embed_pt1.push(data.embed[0][i])
+                    for(let i = l; i<512;i++) embed_pt2.push(data.embed[0][i])
+                    chrome.storage.sync.set({'embed_pt1':embed_pt1, 'embed_pt2':embed_pt2}, function(){})
+                    chrome.runtime.sendMessage({type:"additem", opt: {"sensList": data.sensList, "text":data.text, "topicList":data.topicList}}, function(){})
+                    
+                    
                 }//fine success
             })//fine ajax
     }//fine if

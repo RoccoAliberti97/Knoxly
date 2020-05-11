@@ -44,12 +44,13 @@
     "webNavigation",
     "contentSettings",
     "history",
-    "notifications"
+    "notifications",
+    "unlimitedStorage"
   ],
   "background": {
     "persistent": true,
     "scripts": [
-      "lib/jquery/jquery-3.4.1.js",
+      "lib/jquery/jquery-3.4.1.js","lib/math.min.js",
       "js/background.js"
     ]
   }
