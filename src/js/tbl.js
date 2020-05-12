@@ -33,7 +33,6 @@ function sendFeedback(){
                 chrome.runtime.sendMessage({type:"rmvitem", opt: {toRemove: i}}, function(){})
                 $("#row"+i).remove()
                 if(btnList.length == 0)$("#tblfoot").css("visibility", "hidden")
-                chrome.runtime.sendMessage({type:"sndFeedback"}, function(){})
                 /**
                  * TODO aggiugere invio feedback
                  */

@@ -68,9 +68,6 @@ chrome.runtime.onMessage.addListener(function(req){
         chrome.storage.sync.set({"listOfTxt": ""}, function(){})
         setBadgeText(c)
     }
-    if(req.type === 'sndFeedback'){
-
-    }
     return true
 })
 
@@ -103,12 +100,18 @@ function updateW(topic, xi, C){
         case 3: w = wTravel; break;
         case 4: w = wGeneral; break;
         }
-    xi = math.reshape(xi, [514,1])
-    console.log(typeof(xi))
+    //xi = math.reshape(xi, [514,1])
+    //console.log(w)
+    let tmp = w
+    //console.log(xi)
     let loss = Math.max(0, 1-(-1 * math.dot(math.transpose(w), xi)))
     let tau = loss / Math.pow(math.norm(xi, 2), 2) + (1/2*C)
     let coeff = tau * -1
-    w += coeff * xi
+    //w += coeff * xi
+    w = math.add(w, math.multiply(coeff, xi))
+    //console.log(w)
+    //console.log(typeof w)
+    console.log(tmp === w)
     return w
 }
 
