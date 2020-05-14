@@ -66,9 +66,11 @@ function loadOverall(){
 
 function chooseColor(sens){
     let color = ""
-    if(sens >= 0 && sens <= 0.25) color="#2ecc71"
+    if (sens>=0.36 && sens <= 0.68) color = "#f1c40f"
+    else if (sens>=0.69 && sens <= 1) color = "#e67e22"
+    /*if(sens >= 0 && sens <= 0.25) color="#2ecc71"
     else if(sens >= 0.26 && sens <= 0.50) color = "#f1c40f"
     else if(sens >= 0.51 && sens <= 0.75) color = "#e67e22"
-    else if(sens >= 0.76 && sens <= 1) color = "e74c3c"
+    else if(sens >= 0.76 && sens <= 1) color = "e74c3c"*/
     return color
 }

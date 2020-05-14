@@ -63,11 +63,13 @@ function getImg(sens, topic){
 }
 
 function chooseImg(sens, path){
-    if(sens >= 0 && sens <= 0.25) path+="-green.png"
+    if (sens>=0.36 && sens <= 0.68) path+="-yellow.png"
+    else if (sens>=0.69 && sens <= 1) path+="-red.png"
+    /*if(sens >= 0 && sens <= 0.25) path+="-green.png"
     else if(sens >= 0.26 && sens <= 0.50) path+="-yellow.png"
     else if(sens >= 0.51 && sens <= 0.75) path+="-orange.png"
     else if(sens >= 0.76 && sens <= 1) path+="-red.png"
-    return path
+    return path*/
 }
 
 loadFromStorage()

@@ -61,7 +61,67 @@ function createStat(){
 }
 
 function createAbout(){
-    return `<p>Spiegazioni</p>`
+    return `<p>Spiegazioni</p>
+    <table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col" style="text-align: center">Bollino</th>
+        <th scope="col" style="text-align: center">Descrizione</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+    <td> <img src = "img/bollini/p-yellow.png"></td>
+    <td>descrizione</td>
+    </tr>
+
+    <tr>
+    <td> <img src = "img/bollini/p-red.png"></td>
+    <td>descrizione</td>
+    </tr>
+
+    <tr>
+    <td> <img src = "img/bollini/h-yellow.png"></td>
+    <td>descrizione</td>
+    </tr>
+
+    <tr>
+    <td> <img src = "img/bollini/h-red.png"></td>
+    <td>descrizione</td>
+    </tr>
+    
+    <tr>
+    <td> <img src = "img/bollini/j-yellow.png"></td>
+    <td>descrizione</td>
+    </tr>
+    
+    <tr>
+    <td> <img src = "img/bollini/j-red.png"></td>
+    <td>descrizione</td>
+    </tr>
+    
+    <tr>
+    <td> <img src = "img/bollini/t-yellow.png"></td>
+    <td>descrizione</td>
+    </tr>
+    
+    <tr>
+    <td> <img src = "img/bollini/t-red.png"></td>
+    <td>descrizione</td>
+    </tr>
+
+    <tr>
+    <td> <img src = "img/bollini/g-yellow.png"></td>
+    <td>descrizione</td>
+    </tr>
+
+    <tr>
+    <td> <img src = "img/bollini/g-red.png"></td>
+    <td>descrizione</td>
+    </tr>    
+    </tbody>
+    </table>`
 }
 
 loadAnalysis()
