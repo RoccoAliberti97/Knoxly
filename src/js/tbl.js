@@ -52,7 +52,6 @@ function clearTbl(){
 
 function getImg(sens, topic){
     let path = "img/bollini/"
-    console.log(path)
     switch(topic){
         case 0: path = chooseImg(sens, path+"p"); break;
         case 1: path = chooseImg(sens, path+"h"); break;
@@ -60,7 +59,6 @@ function getImg(sens, topic){
         case 3: path = chooseImg(sens, path+"t"); break;
         case 4: path = chooseImg(sens, path+"g"); break;
     }
-    console.log(path)
     return path
 }
 
