@@ -28,7 +28,7 @@ const citIT = loadDict('../dict/citIT.json')
 const citEU = loadDict('../dict/citEU.json')
 const cognomiList = loadDict('../dict/cognomi.json')//i primi 1000 cognomi più diffusi nell' USA e in Italia
 const nomiList = loadDict('../dict/nomi.json')
-const URL = loadJSON('js/host.json').url
+//const URL = loadJSON('js/host.json').url CARICA L'INDIRIZZO DELL' HOST
 
 $(document).ready(function(){
     //Espressioni regolari
@@ -272,6 +272,7 @@ let lastSep = 0
 let start = 0
 
 function getInput(el,text){
+/* QUESTO BLOCCO FA PARTIRE LE CHIAMATE VERSO L'INTELLIGENZA ARTIFICIALE
 const isSemi = text.includes(';',lastSep)
 const isQmark = text.includes('?',lastSep)
 const isDot = text.includes('.',lastSep)
@@ -302,7 +303,7 @@ let sep = "."
                 }//fine success
             })//fine ajax
     }//fine if
-    }
+    }*/
 
         wordsPII = new Array();
         wordsSD = new Array();
