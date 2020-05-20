@@ -52,6 +52,7 @@ function clearTbl(){
 
 function getImg(sens, topic){
     let path = "img/bollini/"
+    console.log(path)
     switch(topic){
         case 0: path = chooseImg(sens, path+"p"); break;
         case 1: path = chooseImg(sens, path+"h"); break;
@@ -59,6 +60,7 @@ function getImg(sens, topic){
         case 3: path = chooseImg(sens, path+"t"); break;
         case 4: path = chooseImg(sens, path+"g"); break;
     }
+    console.log(path)
     return path
 }
 
@@ -70,6 +72,7 @@ function chooseImg(sens, path){
     else if(sens >= 0.51 && sens <= 0.75) path+="-orange.png"
     else if(sens >= 0.76 && sens <= 1) path+="-red.png"
     return path*/
+    return path
 }
 
 loadFromStorage()
