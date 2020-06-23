@@ -266,6 +266,102 @@ $('body').on('mouseover','.Ar.Au',function(){
      setCaretPosition(data);
      });
  });
+
+//twitter
+    $('body').on('focus', '.r-42olwf.r-1f0042m.r-1phboty.r-d045u9.r-6koalj.r-eqz5dr', function() {
+        const $this = $(this);
+        $this.data('before', $this.html());
+    }).on('blur keyup paste input', '.r-42olwf.r-1f0042m.r-1phboty.r-d045u9.r-6koalj.r-eqz5dr', function(){
+        const $this = $(this);
+        if ($this.data('before') !== $this.html()) {//è stato inserito un nuovo input come testo
+            $this.data('before', $this.html());
+            var element = $(".css-1dbjc4n.r-xoduu5.r-1sp51qo.r-mk0yit.r-13qz1uu");
+            var text = $(".css-1dbjc4n.r-xoduu5.r-1sp51qo.r-mk0yit.r-13qz1uu").text();
+            $this.trigger(getInput(element,text));//find data
+        }
+    });
+//comparsa/scomparsa del tooltip
+    $('body').on('mouseover','.r-42olwf.r-1f0042m.r-1phboty.r-d045u9.r-6koalj.r-eqz5dr',function(){
+
+        if($('.tooltip_knoxly').length){
+            //tooltipExist
+        }
+        else{
+            $('.r-42olwf.r-1f0042m.r-1phboty.r-d045u9.r-6koalj.r-eqz5dr').append(popup);
+        }
+
+        $(this).on("mouseover","span.rosso",function(e){
+            var span = $(this);
+            mouseoverRed(span);
+        });
+        $(this).on("mouseover","span.giallo",function(e){
+            var span = $(this);
+            mouseoverYel(span);
+        });
+        $(this).on("mouseleave","span.rosso", function(){
+
+            mouseleaveRed();
+        });
+        $(this).on("mouseleave","span.giallo", function(){
+            mouseleaveYel();
+        });
+        $(this).on("click",".anonymity",function(){//click sull' anonimizzazione
+            var element = $(".css-1dbjc4n.r-xoduu5.r-1sp51qo.r-mk0yit.r-13qz1uu");
+            var div = element;
+            var currentCaretPosition = getCaretPosition(div[0]);
+            kAnonymity(element);//funzione kanonymity
+            var data = getCaretData(div[0], currentCaretPosition);
+            setCaretPosition(data);
+        });
+    });
+
+    //twitter messaggi
+    $('body').on('focus', '.css-901oao.r-jwli3a.r-6koalj.r-16y2uox.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-qvutc0', function() {
+        const $this = $(this);
+        $this.data('before', $this.html());
+    }).on('blur keyup paste input', '.css-901oao.r-jwli3a.r-6koalj.r-16y2uox.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-qvutc0', function(){
+        const $this = $(this);
+        if ($this.data('before') !== $this.html()) {//è stato inserito un nuovo input come testo
+            $this.data('before', $this.html());
+            var element = $(".css-1dbjc4n.r-xoduu5.r-1sp51qo.r-atwnbb.r-13qz1uu");
+            var text = $(".css-1dbjc4n.r-xoduu5.r-1sp51qo.r-atwnbb.r-13qz1uu").text();
+            $this.trigger(getInput(element,text));//find data
+        }
+    });
+//comparsa/scomparsa del tooltip
+    $('body').on('mouseover','.css-901oao.r-jwli3a.r-6koalj.r-16y2uox.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-qvutc0',function(){
+
+        if($('.tooltip_knoxly').length){
+            //tooltipExist
+        }
+        else{
+            $('.css-901oao.r-jwli3a.r-6koalj.r-16y2uox.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-qvutc0').append(popup);
+        }
+
+        $(this).on("mouseover","span.rosso",function(e){
+            var span = $(this);
+            mouseoverRed(span);
+        });
+        $(this).on("mouseover","span.giallo",function(e){
+            var span = $(this);
+            mouseoverYel(span);
+        });
+        $(this).on("mouseleave","span.rosso", function(){
+
+            mouseleaveRed();
+        });
+        $(this).on("mouseleave","span.giallo", function(){
+            mouseleaveYel();
+        });
+        $(this).on("click",".anonymity",function(){//click sull' anonimizzazione
+            var element = $(".css-1dbjc4n.r-xoduu5.r-1sp51qo.r-atwnbb.r-13qz1uu");
+            var div = element;
+            var currentCaretPosition = getCaretPosition(div[0]);
+            kAnonymity(element);//funzione kanonymity
+            var data = getCaretData(div[0], currentCaretPosition);
+            setCaretPosition(data);
+        });
+    });
  
 //funzione per trovare nel testo di input dati PII,QI,SD
 let lastSep = 0
