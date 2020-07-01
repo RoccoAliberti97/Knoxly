@@ -38,9 +38,9 @@ function createTbl(){
     <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col" style="text-align: center">Frase</th>
-        <th scope="col" style="text-align: center">Badge</th>
-        <th scope="col" style="text-align: center">Feedback</th>
+        <th scope="col" style="text-align: center">Text</th>
+        <th scope="col" style="text-align: center">Result</th>
+        <th scope="col" style="text-align: center"></th>
       </tr>
     </thead>
     <tbody id="tbl">
@@ -61,67 +61,37 @@ function createStat(){
 }
 
 function createAbout(){
-    return `<p>Spiegazioni</p>
+    let topic = ["politics", "health", "job", "travel", "general"]
+    const PATH = "img/bollini/"
+    const R = "-red.png"
+    const Y = "-yellow.png"
+    let bollini = [PATH+"p"+Y, PATH+"p"+R, PATH+"h"+Y, PATH+"h"+R, PATH+"j"+Y, PATH+"j"+R, PATH+"t"+Y, PATH+"t"+R, PATH+"g"+Y, PATH+"g"+R]
+    const MEANLY = "This icon indicates a text mainly talking about <strong>"
+    const RISK_Y = `</strong>. <p><span style="color: #e9c545"><strong>Yellow</strong></span> background indicates <span style="color: #e9c545"><strong>low</strong></span> risk for your privacy</p>`
+    const RISK_R = `</strong>. <p> <span style="color: #d65845"><strong>Red</strong></span> background indicates <span style="color: #d65845"><strong>high</strong></span> risk for your privacy</p>`
+    let tr = `
     <table class="table">
     <thead class="thead-dark">
     <tr>
-        <th scope="col" style="text-align: center">Bollino</th>
-        <th scope="col" style="text-align: center">Descrizione</th>
+        <th scope="col" style="text-align: center">Privacy Awareness icon</th>
+        <th scope="col" style="text-align: center">Descriptions</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody>`
 
-    <tr>
-    <td> <img src = "img/bollini/p-yellow.png"></td>
-    <td>descrizione</td>
-    </tr>
-
-    <tr>
-    <td> <img src = "img/bollini/p-red.png"></td>
-    <td>descrizione</td>
-    </tr>
-
-    <tr>
-    <td> <img src = "img/bollini/h-yellow.png"></td>
-    <td>descrizione</td>
-    </tr>
-
-    <tr>
-    <td> <img src = "img/bollini/h-red.png"></td>
-    <td>descrizione</td>
-    </tr>
-    
-    <tr>
-    <td> <img src = "img/bollini/j-yellow.png"></td>
-    <td>descrizione</td>
-    </tr>
-    
-    <tr>
-    <td> <img src = "img/bollini/j-red.png"></td>
-    <td>descrizione</td>
-    </tr>
-    
-    <tr>
-    <td> <img src = "img/bollini/t-yellow.png"></td>
-    <td>descrizione</td>
-    </tr>
-    
-    <tr>
-    <td> <img src = "img/bollini/t-red.png"></td>
-    <td>descrizione</td>
-    </tr>
-
-    <tr>
-    <td> <img src = "img/bollini/g-yellow.png"></td>
-    <td>descrizione</td>
-    </tr>
-
-    <tr>
-    <td> <img src = "img/bollini/g-red.png"></td>
-    <td>descrizione</td>
-    </tr>    
-    </tbody>
-    </table>`
+    for(let i=0; i < 10; i++){
+        tr += "<tr> <td><img src = \""+bollini[i]+"\"></td>"
+        tr += "<td>"
+        if(i<=1) tr += (i%2==0)? MEANLY+topic[parseInt(i/2)]+RISK_Y:MEANLY+topic[parseInt(i/2)]+RISK_R
+        else if (i<=3) tr += (i%2==0)?MEANLY+topic[parseInt(i/2)]+RISK_Y:MEANLY+topic[parseInt(i/2)]+RISK_R
+        else if (i<=5) tr += (i%2==0)?MEANLY+topic[parseInt(i/2)]+RISK_Y:MEANLY+topic[parseInt(i/2)]+RISK_R
+        else if (i<=7) tr += (i%2==0)?MEANLY+topic[parseInt(i/2)]+RISK_Y:MEANLY+topic[parseInt(i/2)]+RISK_R
+        else if (i<=9) tr += (i%2==0)?MEANLY+topic[parseInt(i/2)]+RISK_Y:MEANLY+topic[parseInt(i/2)]+RISK_R
+        tr+= "</td></tr>"
+    }
+    tr+="</tbody>"
+    tr+="</table>"
+    return tr
 }
 
 loadAnalysis()
