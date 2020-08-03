@@ -316,10 +316,10 @@ $('body').on('mouseover','.Ar.Au',function(){
     });
 
     //twitter messaggi
-    $('body').on('focus', '.css-901oao.r-jwli3a.r-6koalj.r-16y2uox.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-qvutc0', function() {
+    $('body').on('focus', '.css-1dbjc4n.r-obd0qt.r-18u37iz.r-1uu6nss.r-13qz1uu', function() {
         const $this = $(this);
         $this.data('before', $this.html());
-    }).on('blur keyup paste input', '.css-901oao.r-jwli3a.r-6koalj.r-16y2uox.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-qvutc0', function(){
+    }).on('blur keyup paste input', '.css-1dbjc4n.r-obd0qt.r-18u37iz.r-1uu6nss.r-13qz1uu', function(){
         const $this = $(this);
         if ($this.data('before') !== $this.html()) {//è stato inserito un nuovo input come testo
             $this.data('before', $this.html());
@@ -329,13 +329,13 @@ $('body').on('mouseover','.Ar.Au',function(){
         }
     });
 //comparsa/scomparsa del tooltip
-    $('body').on('mouseover','.css-901oao.r-jwli3a.r-6koalj.r-16y2uox.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-qvutc0',function(){
+    $('body').on('mouseover','.css-1dbjc4n.r-obd0qt.r-18u37iz.r-1uu6nss.r-13qz1uu',function(){
 
         if($('.tooltip_knoxly').length){
             //tooltipExist
         }
         else{
-            $('.css-901oao.r-jwli3a.r-6koalj.r-16y2uox.r-1qd0xha.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-qvutc0').append(popup);
+            $('.css-1dbjc4n.r-obd0qt.r-18u37iz.r-1uu6nss.r-13qz1uu').append(popup);
         }
 
         $(this).on("mouseover","span.rosso",function(e){
@@ -362,6 +362,55 @@ $('body').on('mouseover','.Ar.Au',function(){
             setCaretPosition(data);
         });
     });
+
+    //reddit
+    $('body').on('focus', '.notranslate.public-DraftEditor-content', function() {
+        const $this = $(this);
+        $this.data('before', $this.html());
+    }).on('blur keyup paste input', '.notranslate.public-DraftEditor-content', function(){
+        const $this = $(this);
+        if ($this.data('before') !== $this.html()) {//è stato inserito un nuovo input come testo
+            $this.data('before', $this.html());
+            var element = $(".DraftEditor-editorContainer");
+            var text = $(".DraftEditor-editorContainer").text();
+            $this.trigger(getInput(element,text));//find data
+        }
+    });
+//comparsa/scomparsa del tooltip
+    $('body').on('mouseover','.DraftEditor-editorContainer',function(){
+
+        if($('.tooltip_knoxly').length){
+            //tooltipExist
+        }
+        else{
+            $('.DraftEditor-editorContainer').append(popup);
+        }
+
+        $(this).on("mouseover","span.rosso",function(e){
+            var span = $(this);
+            mouseoverRed(span);
+        });
+        $(this).on("mouseover","span.giallo",function(e){
+            var span = $(this);
+            mouseoverYel(span);
+        });
+        $(this).on("mouseleave","span.rosso", function(){
+
+            mouseleaveRed();
+        });
+        $(this).on("mouseleave","span.giallo", function(){
+            mouseleaveYel();
+        });
+        $(this).on("click",".anonymity",function(){//click sull' anonimizzazione
+            var element = $(".notranslate.public-DraftEditor-content");
+            var div = element;
+            var currentCaretPosition = getCaretPosition(div[0]);
+            kAnonymity(element);//funzione kanonymity
+            var data = getCaretData(div[0], currentCaretPosition);
+            setCaretPosition(data);
+        });
+    });
+
  
 //funzione per trovare nel testo di input dati PII,QI,SD
 let lastSep = 0
