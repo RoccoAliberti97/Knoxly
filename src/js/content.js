@@ -417,7 +417,7 @@ let lastSep = 0
 let start = 0
 
 function getInput(el,text){
-/* QUESTO BLOCCO FA PARTIRE LE CHIAMATE VERSO L'INTELLIGENZA ARTIFICIALE
+// QUESTO BLOCCO FA PARTIRE LE CHIAMATE VERSO L'INTELLIGENZA ARTIFICIALE
 const isSemi = text.includes(';',lastSep)
 const isQmark = text.includes('?',lastSep)
 const isDot = text.includes('.',lastSep)
@@ -448,7 +448,7 @@ let sep = "."
                 }//fine success
             })//fine ajax
     }//fine if
-    }*/
+    }//fine chiamata IA
 
         wordsPII = new Array();
         wordsSD = new Array();
