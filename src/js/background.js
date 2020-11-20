@@ -18,7 +18,9 @@ let structure = {
 chrome.storage.sync.set({"listOfTxt": ""}, function(){})//inizializzo lo storage
 chrome.storage.sync.set({"occurrence": [0,0,0,0,0]}, function(){})//inizializzo lo storage
 chrome.storage.sync.set({"avg": 0}, function(){})//inizializzo lo storage
-
+chrome.storage.sync.set({"dataSD": [0]}, function(){})//inizializzo lo storage
+chrome.storage.sync.set({"dataQI": [0,0,0,0]}, function(){})//inizializzo lo storage
+chrome.storage.sync.set({"dataPII": [0,0,0,0]}, function(){})//inizializzo lo storage
 
 chrome.runtime.onMessage.addListener(function(req){
     if(req.type === 'additem'){
@@ -94,6 +96,13 @@ function setAvg(sens){
     chrome.storage.sync.set({"avg": avg}, function(){})
 }
 
+/*function updateData(topicList){
+    chrome.storage.sync.get(['dataSD'], function(res){
+        res.dataSD = nSD.length
+        chrome.storage.sync.set({"dataSD": [res.dataSD]}, function (){})
+    })
+}
+*/
 function updateW(topic, xi, C){
     let w = []
     switch(topic){

@@ -63,6 +63,70 @@ function loadOverall(){
         });
     })
 }
+function loadDataColumn() {
+    chrome.storage.sync.get(['dataSD','dataQI','dataPII'], function(res){
+    Highcharts.chart('dc', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Dati Personali'
+        },
+        xAxis: {
+            categories: ['Gmail', 'Telegram', 'Twitter', 'Reddit']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Totale dati personali'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: ( // theme
+                        Highcharts.defaultOptions.title.style &&
+                        Highcharts.defaultOptions.title.style.color
+                    ) || 'gray'
+                }
+            }
+        },
+        legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 25,
+            floating: true,
+            backgroundColor:
+                Highcharts.defaultOptions.legend.backgroundColor || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        series: [{
+            name: 'SD',
+            data: res.dataSD
+        }, {
+            name: 'QI',
+            data: res.dataQI
+        }, {
+            name: 'PII',
+            data: res.dataPII
+        }]
+    });
+})}
 
 function chooseColor(sens){
     let color = ""

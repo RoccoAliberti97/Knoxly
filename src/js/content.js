@@ -169,10 +169,10 @@ $(document).ready(function(){
     }
 
   //telegram web
-$('body').on('focus', '.im_send_field_wrap.hasselect', function() {
+$('body').on('focus', '.im_send_form_wrap.clearfix', function() {
     const $this = $(this);
     $this.data('before', $this.html());
-}).on('blur keyup paste input', '.im_send_field_wrap.hasselect', function(){
+}).on('blur keyup paste input', '.im_send_form_wrap.clearfix', function(){
     const $this = $(this);
     if ($this.data('before') !== $this.html()) {//è stato inserito un nuovo input come testo
         $this.data('before', $this.html());
@@ -182,13 +182,13 @@ $('body').on('focus', '.im_send_field_wrap.hasselect', function() {
     }  
 });
 //comparsa/scomparsa del tooltip
-$('body').on('mouseover','.im_send_field_wrap.hasselect',function(){
+$('body').on('mouseover','.im_send_form_wrap.clearfix',function(){
    
     if($('.tooltip_knoxly').length){
      //tooltipExist
      }
      else{
-         $('.im_send_field_wrap.hasselect').append(popup);
+         $('.im_send_form_wrap.clearfix').append(popup);
      }
 
     $(this).on("mouseover","span.rosso",function(e){  
@@ -217,61 +217,58 @@ $('body').on('mouseover','.im_send_field_wrap.hasselect',function(){
  });
 
 //gmail
-$('body').on('focus', '.Am.Al.editable.LW-avf.tS-tW', function() {
-   
-    const $this = $(this);
-    $this.data('before', $this.html());
-}).on('blur keyup paste input', '.Am.Al.editable.LW-avf.tS-tW', function(){
-    
-    const $this = $(this);
-    if ($this.data('before') !== $this.html()) {//è stato inserito un nuovo input come testo
-        $this.data('before', $this.html());
-        var element = $this
-        var text = $this.text();
-        $this.trigger(getInput(element,text));//find data
-    }      
-});
-//comparsa/scomparsa tooltip
-$('body').on('mouseover','.Ar.Au',function(){
-    if($('.tooltip_knoxly').length){
-     //tooltipExist
-     }
-     else{
-         $('.Ar.Au').append(popup);
-     }
- 
-    $(this).on("mouseover","span.rosso",function(e){
-        
-        var span = $(this);
-        mouseoverRed(span);
-    });
-    $(this).on("mouseover","span.giallo",function(e){
-        var span = $(this);
-        mouseoverYel(span);
-    });
-    $(this).on("mouseleave","span.rosso", function(){	
-        mouseleaveRed();
-    });
-    $(this).on("mouseleave","span.giallo", function(){	
-        //var span = this;
-        mouseleaveYel();
-    });
-    
-    $(this).on("click",".anonymity",function(){
-     var element = $(".Am.Al.editable.LW-avf.tS-tW");
-     var div = element;
-     var currentCaretPosition = getCaretPosition(div[0]);
-     kAnonymity(element);
-     var data = getCaretData(div[0], currentCaretPosition);
-     setCaretPosition(data);
-     });
- });
-
-//twitter
-    $('body').on('focus', '.r-42olwf.r-1f0042m.r-1phboty.r-d045u9.r-6koalj.r-eqz5dr', function() {
+    $('body').on('focus', '.Ap', function() {
         const $this = $(this);
         $this.data('before', $this.html());
-    }).on('blur keyup paste input', '.r-42olwf.r-1f0042m.r-1phboty.r-d045u9.r-6koalj.r-eqz5dr', function(){
+    }).on('blur keyup paste input', '.Ap', function(){
+        const $this = $(this);
+        if ($this.data('before') !== $this.html()) {//è stato inserito un nuovo input come testo
+            $this.data('before', $this.html());
+            var element = $(".Ar.Au");
+            var text = $(".Ar.Au").text();
+            $this.trigger(getInput(element,text));//find data
+        }
+    });
+//comparsa/scomparsa del tooltip
+    $('body').on('mouseover','.Ap',function(){
+
+        if($('.tooltip_knoxly').length){
+            //tooltipExist
+        }
+        else{
+            $('.Ap').append(popup);
+        }
+
+        $(this).on("mouseover","span.rosso",function(e){
+            var span = $(this);
+            mouseoverRed(span);
+        });
+        $(this).on("mouseover","span.giallo",function(e){
+            var span = $(this);
+            mouseoverYel(span);
+        });
+        $(this).on("mouseleave","span.rosso", function(){
+
+            mouseleaveRed();
+        });
+        $(this).on("mouseleave","span.giallo", function(){
+            mouseleaveYel();
+        });
+        $(this).on("click",".anonymity",function(){//click sull' anonimizzazione
+            var element = $(".Ar.Au");
+            var div = element;
+            var currentCaretPosition = getCaretPosition(div[0]);
+            kAnonymity(element);//funzione kanonymity
+            var data = getCaretData(div[0], currentCaretPosition);
+            setCaretPosition(data);
+        });
+    });
+
+//twitter
+    $('body').on('focus', '.css-1dbjc4n.r-16y2uox.r-1wbh5a2.r-1jgb5lz.r-1ye8kvj.r-13qz1uu', function() {
+        const $this = $(this);
+        $this.data('before', $this.html());
+    }).on('blur keyup paste input', '.r-42olwf.r-z2wwpe.r-1phboty.r-d045u9.r-6koalj.r-eqz5dr', function(){
         const $this = $(this);
         if ($this.data('before') !== $this.html()) {//è stato inserito un nuovo input come testo
             $this.data('before', $this.html());
@@ -281,13 +278,13 @@ $('body').on('mouseover','.Ar.Au',function(){
         }
     });
 //comparsa/scomparsa del tooltip
-    $('body').on('mouseover','.r-42olwf.r-1f0042m.r-1phboty.r-d045u9.r-6koalj.r-eqz5dr',function(){
+    $('body').on('mouseover','.r-42olwf.r-z2wwpe.r-1phboty.r-d045u9.r-6koalj.r-eqz5dr',function(){
 
         if($('.tooltip_knoxly').length){
             //tooltipExist
         }
         else{
-            $('.r-42olwf.r-1f0042m.r-1phboty.r-d045u9.r-6koalj.r-eqz5dr').append(popup);
+            $('.r-42olwf.r-z2wwpe.r-1phboty.r-d045u9.r-6koalj.r-eqz5dr').append(popup);
         }
 
         $(this).on("mouseover","span.rosso",function(e){
@@ -316,10 +313,10 @@ $('body').on('mouseover','.Ar.Au',function(){
     });
 
     //twitter messaggi
-    $('body').on('focus', '.css-1dbjc4n.r-obd0qt.r-18u37iz.r-1uu6nss.r-13qz1uu', function() {
+    $('body').on('focus', '.css-1dbjc4n.r-1niwhzg.r-p1n3y5.r-1867qdf.r-1phboty.r-rs99b7.r-eqz5dr.r-16y2uox.r-1wbh5a2.r-1777fci.r-13qz1uu', function() {
         const $this = $(this);
         $this.data('before', $this.html());
-    }).on('blur keyup paste input', '.css-1dbjc4n.r-obd0qt.r-18u37iz.r-1uu6nss.r-13qz1uu', function(){
+    }).on('blur keyup paste input', '.css-1dbjc4n.r-1niwhzg.r-p1n3y5.r-1867qdf.r-1phboty.r-rs99b7.r-eqz5dr.r-16y2uox.r-1wbh5a2.r-1777fci.r-13qz1uu', function(){
         const $this = $(this);
         if ($this.data('before') !== $this.html()) {//è stato inserito un nuovo input come testo
             $this.data('before', $this.html());
@@ -329,13 +326,13 @@ $('body').on('mouseover','.Ar.Au',function(){
         }
     });
 //comparsa/scomparsa del tooltip
-    $('body').on('mouseover','.css-1dbjc4n.r-obd0qt.r-18u37iz.r-1uu6nss.r-13qz1uu',function(){
+    $('body').on('mouseover','.css-1dbjc4n.r-1niwhzg.r-p1n3y5.r-1867qdf.r-1phboty.r-rs99b7.r-eqz5dr.r-16y2uox.r-1wbh5a2.r-1777fci.r-13qz1uu',function(){
 
         if($('.tooltip_knoxly').length){
             //tooltipExist
         }
         else{
-            $('.css-1dbjc4n.r-obd0qt.r-18u37iz.r-1uu6nss.r-13qz1uu').append(popup);
+            $('.css-1dbjc4n.r-1niwhzg.r-p1n3y5.r-1867qdf.r-1phboty.r-rs99b7.r-eqz5dr.r-16y2uox.r-1wbh5a2.r-1777fci.r-13qz1uu').append(popup);
         }
 
         $(this).on("mouseover","span.rosso",function(e){
@@ -364,20 +361,20 @@ $('body').on('mouseover','.Ar.Au',function(){
     });
 
     //reddit
-    $('body').on('focus', '.notranslate.public-DraftEditor-content', function() {
+    $('body').on('focus', '._13Sj3UMDKkCCJTq88berCB ', function() {
         const $this = $(this);
         $this.data('before', $this.html());
-    }).on('blur keyup paste input', '.notranslate.public-DraftEditor-content', function(){
+    }).on('blur keyup paste input', '._13Sj3UMDKkCCJTq88berCB ', function(){
         const $this = $(this);
         if ($this.data('before') !== $this.html()) {//è stato inserito un nuovo input come testo
             $this.data('before', $this.html());
-            var element = $(".DraftEditor-editorContainer");
-            var text = $(".DraftEditor-editorContainer").text();
+            var element = $("._13Sj3UMDKkCCJTq88berCB ");
+            var text = $("._13Sj3UMDKkCCJTq88berCB ").text();
             $this.trigger(getInput(element,text));//find data
         }
     });
 //comparsa/scomparsa del tooltip
-    $('body').on('mouseover','.DraftEditor-editorContainer',function(){
+    $('body').on('mouseover','._13Sj3UMDKkCCJTq88berCB ',function(){
 
         if($('.tooltip_knoxly').length){
             //tooltipExist
@@ -402,7 +399,7 @@ $('body').on('mouseover','.Ar.Au',function(){
             mouseleaveYel();
         });
         $(this).on("click",".anonymity",function(){//click sull' anonimizzazione
-            var element = $(".notranslate.public-DraftEditor-content");
+            var element = $("._13Sj3UMDKkCCJTq88berCB ");
             var div = element;
             var currentCaretPosition = getCaretPosition(div[0]);
             kAnonymity(element);//funzione kanonymity

@@ -18,6 +18,7 @@ function loadStatistic(){
             $("#contentepage").html(createStat())
             loadBarPlot()
             loadOverall()
+            loadDataColumn()
             currentTab = 1
         }
     })
@@ -57,6 +58,7 @@ function createStat(){
     return `
       <div id = "bp" style="height: 250px; width: 350px;"></div>
       <div id = "overall" style="height: 250px; width: 350px;"></div>
+      <div id = "dc" style="height: 250px; width: 350px;"></div>
       `
 }
 
