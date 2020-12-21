@@ -64,7 +64,8 @@ function loadOverall(){
     })
 }
 function loadDataColumn() {
-    chrome.storage.sync.get(['nomi','cognomi','telefoni','luoghi','medici','politici','religiosi','email','ssn','targa','patente','passaporto','indirizzoip','indirizzocasa','datadinascita','iban','tradeunion','orientamentosessuale','razza','cap'], function(res) {    Highcharts.chart('dc', {
+    chrome.storage.sync.get(['nomi','cognomi','telefoni','luoghi','medici','politici','religiosi','email','ssn','targa','patente','passaporto','indirizzoip','indirizzocasa','datadinascita','iban','tradeunion','orientamentosessuale','razza','cap'], function(res) {
+        Highcharts.chart('dc', {
         chart: {
             type: 'column'
         },
