@@ -72,6 +72,7 @@ $(document).ready(function(){
     let razzeReg = /\b(caucasoide|europide|mongoloide|amerindioide|indianoide|negroide|congoide|capoide|australoide|caucasoid|europid|mongoloid|amerindian|negroid|congoid|capoid|australoid)\b/ig;
     let zipCode = /\b\d{5}\b/g;
     //altri dati
+    let countNo = 0, countCo = 0, countTel = 0, countLuo = 0, countMed = 0, countPol = 0, countRel = 0, countEmail = 0, countSsn = 0, countTar = 0, countPat = 0, countPas = 0, countIp = 0, countIndCasa = 0, countNasc = 0, countIban = 0, countTradeUnion = 0, countSex = 0, countRazza = 0, countCap = 0;
 
     var ICD ={}  //dizionario per dati medici
     var icdTrovati ; //array dei dati medici trovati
@@ -102,6 +103,19 @@ $(document).ready(function(){
     var nPII = 0; //numero di PII citTrovati
     var nSQ = 0; //numero di SDeQI trovati
     var temp ; // array per le stop word trovate
+    var email;
+    var ssn;
+    var targa;
+    var patente;
+    var passaporto;
+    var indirizzoIp;
+    var indirizzoCasa;
+    var dataDiNascita;
+    var iban;
+    var tradeUnion;
+    var orientamentoSessuale;
+    var razza;
+    var cap;
  
     //popup per l'hover del mouse su un dato sottolineato
     let popup = "<div class='tooltip_knoxly'  style='display:none'> "+
@@ -130,7 +144,7 @@ $(document).ready(function(){
     s = listStopWords.s, t = listStopWords.t, u = listStopWords.u,
     v = listStopWords.v, w = listStopWords.w, y = listStopWords.y, z = listStopWords.z;
 
-    // funzione per sottolineare      
+    // funzione per sottolineare
     function hightLight(div) {
 
         var className = $(div).attr('class');
@@ -141,7 +155,7 @@ $(document).ready(function(){
             text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' '),
             exp;
 
-        $.each(wordsPII, function(i, word) { //aggiunge il tag span 
+        $.each(wordsPII, function(i, word) { //aggiunge il tag span
             exp = new RegExp('\\b(' + word + ')\\b', 'g');
             html = html.replace(exp,function(m) {
         //console.log('WORD MATCH:', m);
@@ -149,7 +163,7 @@ $(document).ready(function(){
             });
         });
         
-        $.each(wordsSD, function(i, word) { //aggiunge il tag span 
+        $.each(wordsSD, function(i, word) { //aggiunge il tag span
             exp = new RegExp('\\b(' + word + ')\\b', 'g');
             html = html.replace(exp, function(m) {
         //console.log('WORD MATCH:', m);
@@ -161,7 +175,7 @@ $(document).ready(function(){
             var s = word.replace(/\+/,"\\+");
             exp = new RegExp('(' + s + ')', 'g');
             html = html.replace(exp, function(m) {
-        //console.log('WORD MATCH:', m);    
+        //console.log('WORD MATCH:', m);
                 return '<span class = "rosso">' + m + '</span>';
             });
         });
@@ -217,26 +231,26 @@ $('body').on('mouseover','.im_send_form_wrap.clearfix',function(){
  });
 
 //gmail
-    $('body').on('focus', '.Ap', function() {
+    $('body').on('focus', '.Ar.Au', function() {
         const $this = $(this);
         $this.data('before', $this.html());
-    }).on('blur keyup paste input', '.Ap', function(){
+    }).on('blur keyup paste input', '.Ar.Au', function(){
         const $this = $(this);
         if ($this.data('before') !== $this.html()) {//è stato inserito un nuovo input come testo
             $this.data('before', $this.html());
-            var element = $(".Ar.Au");
-            var text = $(".Ar.Au").text();
+            var element = $(".Am.Al.editable.LW-avf.tS-tW");
+            var text = $(".Am.Al.editable.LW-avf.tS-tW").text();
             $this.trigger(getInput(element,text));//find data
         }
     });
 //comparsa/scomparsa del tooltip
-    $('body').on('mouseover','.Ap',function(){
+    $('body').on('mouseover','.Ar.Au',function(){
 
         if($('.tooltip_knoxly').length){
             //tooltipExist
         }
         else{
-            $('.Ap').append(popup);
+            $('.Ar.Au').append(popup);
         }
 
         $(this).on("mouseover","span.rosso",function(e){
@@ -255,7 +269,7 @@ $('body').on('mouseover','.im_send_form_wrap.clearfix',function(){
             mouseleaveYel();
         });
         $(this).on("click",".anonymity",function(){//click sull' anonimizzazione
-            var element = $(".Ar.Au");
+            var element = $(".Am.Al.editable.LW-avf.tS-tW");
             var div = element;
             var currentCaretPosition = getCaretPosition(div[0]);
             kAnonymity(element);//funzione kanonymity
@@ -450,7 +464,7 @@ let sep = "."
         wordsPII = new Array();
         wordsSD = new Array();
         telefoni = new Array();
-        allWordsPD = new Array();
+        wordsQI = new Array();
         pol= new Array();
         rel = new Array();
         icdTrovati = new Array();
@@ -458,10 +472,23 @@ let sep = "."
         cognTrovati = new Array();
         nomiTrovati = new Array();
         nPII = 0;
-        nSD  = 0;
+        nSQ  = 0;
         var i = 0;
         var str = text;//tutto il testo in input
-            div = el;
+        var div = el;
+        email = new Array();
+        ssn = new Array();
+        targa = new Array();
+        patente = new Array();
+        passaporto = new Array();
+        indirizzoIp = new Array();
+        indirizzoCasa = new Array();
+        dataDiNascita = new Array();
+        iban = new Array();
+        tradeUnion = new Array();
+        orientamentoSessuale = new Array();
+        razza = new Array();
+        cap = new Array();
 
         inText = str;
         //match con Regex 
@@ -497,6 +524,96 @@ let sep = "."
             if(telefoni.length == 0) telefoni = str.match(nTelReg);
             else telefoni = telefoni.concat(str.match(nTelReg));
         }
+    //email
+    if(emailReg.test(str)){
+        if(email.length == 0) email = str.match(emailReg);
+        else email = email.concat(str.match(emailReg));
+    }
+    //social security number
+    if(ssnReg.test(str)){
+        if(ssn.length == 0) ssn = str.match(ssnReg);
+        else ssn = ssn.concat(str.match(ssnReg));
+    }
+    //targa
+    if(tarGbReg.test(str) || tarGrReg.test(str) || tarHrFrReg.test(str) || tarNlReg.test(str) || tarPlReg.test(str) || tarPtReg.test(str) || tarRoReg.test(str) || tarIeReg.test(str) || tarIsReg.test(str) || tarItReg.test(str) || tarLSUReg.test(str) || tarLvLuReg.test(str)){
+        if(targa.length == 0) {
+            if(tarGbReg != null)  targa = str.match(tarGbReg);
+            if(tarGrReg != null)  targa = str.match(tarGrReg);
+            if(tarHrFrReg != null)  targa = str.match(tarHrFrReg);
+            if(tarNlReg != null)  targa = str.match(tarNlReg);
+            if(tarPlReg != null)  targa = str.match(tarPlReg);
+            if(tarPtReg != null)  targa = str.match(tarPtReg);
+            if(tarRoReg != null)  targa = str.match(tarRoReg);
+            if(tarIeReg != null)  targa = str.match(tarIeReg);
+            if(tarIsReg != null)  targa = str.match(tarIsReg);
+            if(tarItReg!= null)  targa = str.match(tarItReg);
+            if(tarLSUReg != null)  targa = str.match(tarLSUReg);
+            if(tarLvLuReg != null)  targa = str.match(tarLvLuReg);
+        }
+        else targa = targa.concat(str.match(tarGbReg)).concat(str.match(tarGrReg)).concat(str.match(tarHrFrReg)).concat(str.match(tarNlReg)).concat(str.match(tarPlReg)).concat(str.match(tarPtReg)).concat(str.match(tarRoReg)).concat(str.match(tarIeReg)).concat(str.match(tarIsReg)).concat(str.match(tarItReg)).concat(str.match(tarLSUReg)).concat(str.match(tarLvLuReg));
+    }
+    //patente
+    if(patReg.test(str)){
+        if(patente.length == 0) patente = str.match(patReg);
+        else patente = patente.concat(str.match(patReg));
+    }
+    //passaporto
+    if(npassReg.test(str)){
+        if(passaporto.length == 0) passaporto = str.match(npassReg);
+        else passaporto = passaporto.concat(str.match(npassReg));
+    }
+    //indirizzo ip
+    if(ipReg.test(str)){
+        if(indirizzoIp.length == 0) indirizzoIp = str.match(ipReg);
+        else indirizzoIp = indirizzoIp.concat(str.match(ipReg));
+    }
+    //indirizzo di casa
+    if(indITReg.test(testo) || indUSAReg.test(testo)){
+        if(indirizzoCasa.length == 0) {
+            if(indITReg != null)  indirizzoCasa = str.match(indITReg);
+            if(indUSAReg != null)  indirizzoCasa = str.match(indUSAReg);
+        }
+        else indirizzoCasa = indirizzoCasa.concat(str.match(indITReg)).concat(str.match(indUSAReg));
+    }
+    //data di nascita
+    if(dataDMYReg.test(str) || dataMDYReg.test(str) || dataYDMReg.test(str)){
+        if(dataDiNascita.length == 0) {
+            if(dataDMYReg != null)  dataDiNascita = str.match(dataDMYReg);
+            if(dataMDYReg != null)  dataDiNascita = str.match(dataMDYReg);
+            if(dataYDMReg != null)  dataDiNascita = str.match(dataYDMReg);
+        }
+        else dataDiNascita = dataDiNascita.concat(str.match(dataDMYReg)).concat(str.match(dataMDYReg)).concat(str.match(dataYDMReg));
+    }
+    //iban
+    if(ibanItReg.test(str) || ibanReg1.test(str) || ibanReg2.test(str) || carCredReg.test(str)){
+        if(iban.length == 0){
+            if(ibanItReg != null)  iban = str.match(ibanItReg);
+            if(ibanReg1 != null)  iban = str.match(ibanReg1);
+            if(ibanReg2 != null)  iban = str.match(ibanReg2);
+            if(carCredReg != null)  iban = str.match(carCredReg);
+        }
+        else iban = iban.concat(str.match(ibanItReg)).concat(str.match(ibanReg1)).concat(str.match(ibanReg2)).concat(str.match(carCredReg));
+    }
+    //trade union
+    if(sindReg.test(str)){
+        if(tradeUnion.length == 0) tradeUnion = str.match(sindReg);
+        else tradeUnion = tradeUnion.concat(str.match(sindReg));
+    }
+    //orientamento sessuale
+    if(sexReg.test(str)){
+        if(orientamentoSessuale.length == 0) orientamentoSessuale = str.match(sexReg);
+        else orientamentoSessuale = orientamentoSessuale.concat(str.match(sexReg));
+    }
+    //razza
+    if(razzeReg.test(str)){
+        if(razza.length == 0) razza = str.match(razzeReg);
+        else razza = razza.concat(str.match(razzeReg));
+    }
+    //cap
+    if(zipCode.test(str)){
+        if(cap.length == 0) cap = str.match(zipCode);
+        else cap = cap.concat(str.match(zipCode));
+    }
         //rimuovi dalla stringa di input tutti i dati trovati con le regex
         str = removePD(str,wordsPII);
         str = removePD(str,wordsSD);
@@ -509,7 +626,6 @@ let sep = "."
        // dati politici
        pol = findDati(ideolPol,inText); 
        if(pol!= null)wordsSD= wordsSD.concat(pol);
-       
        // dati religiosi
        rel = findDati(religioni,inText); 
        if(rel!= null) wordsSD = wordsSD.concat(rel);
@@ -527,7 +643,6 @@ let sep = "."
        // luoghi
        citTrovati = getDati(str,cities);
        if(citTrovati!= null){
-           
            wordsPII = wordsPII.concat(citTrovati);
        }
         str = removePD(str,wordsPII);
@@ -562,7 +677,8 @@ let sep = "."
         if(wordsSD!= null){
             nSQ = wordsSD.length;
         }
-         sendData();//passa i dati al popup 
+        updateData();
+        sendData();//passa i dati al popup
     }
 
 
@@ -667,7 +783,7 @@ let sep = "."
     function getDati(str,dict){
         var arr = new Array();
         for(var key in dict){
-            exp = new RegExp('\\b(' + key + ')\\b', 'gi');
+            var exp = new RegExp('\\b(' + key + ')\\b', 'gi');
             var word = str.match(exp);
             if(word != null){
                 arr = arr.concat(word);  
@@ -1081,5 +1197,150 @@ let sep = "."
                     console.error("Unrecognised message: ", message);
             }
         });
+    }
+
+    function updateData() {
+        chrome.storage.sync.get(['nomi','cognomi','telefoni','luoghi','medici','politici','religiosi','email','ssn','targa','patente','passaporto','indirizzoip','indirizzocasa','datadinascita','iban','tradeunion','orientamentosessuale','razza','cap'], function(res) {
+            if (nomiTrovati.length == 0) countNo = 0;
+            else if (nomiTrovati.length < countNo) countNo--;
+            else if (countNo < nomiTrovati.length) {
+                res.nomi++;
+                chrome.storage.sync.set({"nomi": res.nomi}, function () {})
+                countNo++;
+            }
+            if (cognTrovati.length == 0) countCo = 0;
+            else if (cognTrovati.length < countCo) countCo--;
+            else if (countCo < cognTrovati.length) {
+                res.cognomi++;
+                chrome.storage.sync.set({"cognomi": res.cognomi}, function () {})
+                countCo++;
+            }
+            if (telefoni.length == 0) countTel = 0;
+            else if (telefoni.length < countTel) countTel--;
+            else if (countTel < telefoni.length) {
+                res.telefoni++;
+                chrome.storage.sync.set({"telefoni": res.telefoni}, function () {})
+                countTel++;
+            }
+            if (citTrovati.length == 0) countLuo = 0;
+            else if (citTrovati.length < countLuo) countLuo--;
+            else if (countLuo < citTrovati.length) {
+                res.luoghi++;
+                chrome.storage.sync.set({"luoghi": res.luoghi}, function () {})
+                countLuo++;
+            }
+            if (icdTrovati.length == 0) countMed = 0;
+            else if (icdTrovati.length < countMed) countMed--;
+            else if (countMed < icdTrovati.length) {
+                res.medici++;
+                chrome.storage.sync.set({"medici": res.medici}, function () {})
+                countMed++;
+            }
+            if (pol.length == 0) countPol = 0;
+            else if (pol.length < countPol) countPol--;
+            else if (countPol < pol.length) {
+                res.politici++;
+                chrome.storage.sync.set({"politici": res.politici}, function () {})
+                countPol++;
+            }
+            if (rel.length == 0) countRel = 0;
+            else if (rel.length < countRel) countRel--;
+            else if (countRel < rel.length) {
+                res.religiosi++;
+                chrome.storage.sync.set({"religiosi": res.religiosi}, function () {})
+                countRel++;
+            }
+            if (email.length == 0) countEmail = 0;
+            else if (email.length < countEmail) countEmail--;
+            else if (countEmail < email.length) {
+                res.email++;
+                chrome.storage.sync.set({"email": res.email}, function () {})
+                countEmail++;
+            }
+            if (ssn.length == 0) countSsn = 0;
+            else if (ssn.length < countSsn) countSsn--;
+            else if (countSsn < ssn.length) {
+                res.ssn++;
+                chrome.storage.sync.set({"ssn": res.ssn}, function () {})
+                countSsn++;
+            }
+            if (targa.length == 0) countTar = 0;
+            else if (targa.length < countTar) countTar--;
+            else if (countTar < targa.length) {
+                res.targa++;
+                chrome.storage.sync.set({"targa": res.targa}, function () {})
+                countTar++;
+            }
+            if (patente.length == 0) countPat = 0;
+            else if (patente.length < countPat) countPat--;
+            else if (countPat < patente.length) {
+                res.patente++;
+                chrome.storage.sync.set({"patente": res.patente}, function () {})
+                countPat++;
+            }
+            if (passaporto.length == 0) countPas = 0;
+            else if (passaporto.length < countPas) countPas--;
+            else if (countPas < passaporto.length) {
+                res.passaporto++;
+                chrome.storage.sync.set({"passaporto": res.passaporto}, function () {})
+                countPas++;
+            }
+            if (indirizzoIp.length == 0) countIp = 0;
+            else if (indirizzoIp.length < countIp) countIp--;
+            else if (countIp < indirizzoIp.length) {
+                res.indirizzoip++;
+                chrome.storage.sync.set({"indirizzoip": res.indirizzoip}, function () {})
+                countIp++;
+            }
+            if (indirizzoCasa.length == 0) countIndCasa = 0;
+            else if (indirizzoCasa.length < countIndCasa) countIndCasa--;
+            else if (countIndCasa < indirizzoCasa.length) {
+                res.indirizzocasa++;
+                chrome.storage.sync.set({"indirizzocasa": res.indirizzocasa}, function () {})
+                countIndCasa++;
+            }
+            if (dataDiNascita.length == 0) countNasc = 0;
+            else if (dataDiNascita.length < countNasc) countNasc--;
+            else if (countNasc < dataDiNascita.length) {
+                res.datadinascita++;
+                chrome.storage.sync.set({"datadinascita": res.datadinascita}, function () {})
+                countNasc++;
+            }
+            if (iban.length == 0) countIban = 0;
+            else if (iban.length < countIban) countIban--;
+            else if (countIban < iban.length) {
+                res.iban++;
+                chrome.storage.sync.set({"iban": res.iban}, function () {})
+                countIban++;
+            }
+            if (tradeUnion.length == 0) countTradeUnion = 0;
+            else if (tradeUnion.length < countTradeUnion) countTradeUnion--;
+            else if (countTradeUnion < tradeUnion.length) {
+                res.tradeunion++;
+                chrome.storage.sync.set({"tradeunion": res.tradeunion}, function () {})
+                countTradeUnion++;
+            }
+            if (orientamentoSessuale.length == 0) countSex = 0;
+            else if (orientamentoSessuale.length < countSex) countSex--;
+            else if (countSex < orientamentoSessuale.length) {
+                res.orientamentosessuale++;
+                chrome.storage.sync.set({"orientamentosessuale": res.orientamentosessuale}, function () {})
+                countSex++;
+            }
+            if (razza.length == 0) countRazza = 0;
+            else if (razza.length < countRazza) countRazza--;
+            else if (countRazza < razza.length) {
+                res.razza++;
+                chrome.storage.sync.set({"razza": res.razza}, function () {})
+                countRazza++;
+            }
+            if (cap.length == 0) countCap = 0;
+            else if (cap.length < countCap) countCap--;
+            else if (countCap < cap.length) {
+                res.cap++;
+                chrome.storage.sync.set({"cap": res.cap}, function () {})
+                countCap++;
+            }
+        })
     }
 });

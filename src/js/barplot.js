@@ -64,8 +64,7 @@ function loadOverall(){
     })
 }
 function loadDataColumn() {
-    chrome.storage.sync.get(['dataSD','dataQI','dataPII'], function(res){
-    Highcharts.chart('dc', {
+    chrome.storage.sync.get(['nomi','cognomi','telefoni','luoghi','medici','politici','religiosi','email','ssn','targa','patente','passaporto','indirizzoip','indirizzocasa','datadinascita','iban','tradeunion','orientamentosessuale','razza','cap'], function(res) {    Highcharts.chart('dc', {
         chart: {
             type: 'column'
         },
@@ -73,7 +72,14 @@ function loadDataColumn() {
             text: 'Dati Personali'
         },
         xAxis: {
-            categories: ['Gmail', 'Telegram', 'Twitter', 'Reddit']
+            categories: ['Nomi', 'Cognome', 'Telefoni', 'Luoghi', 'Medici', 'Politici', 'Religiosi', 'Email', 'Social Number','Targa','Patente','Passaporto','Indirizzo IP','Indirizzo di casa','Data di nascita','Iban','Trade union','Orientamento sessuale','Razza','CAP'],
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '6px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
         },
         yAxis: {
             min: 0,
@@ -92,20 +98,11 @@ function loadDataColumn() {
             }
         },
         legend: {
-            align: 'right',
-            x: -30,
-            verticalAlign: 'top',
-            y: 25,
-            floating: true,
-            backgroundColor:
-                Highcharts.defaultOptions.legend.backgroundColor || 'white',
-            borderColor: '#CCC',
-            borderWidth: 1,
-            shadow: false
+            enabled:false
         },
         tooltip: {
             headerFormat: '<b>{point.x}</b><br/>',
-            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+            pointFormat: ' Total: {point.stackTotal}'
         },
         plotOptions: {
             column: {
@@ -116,14 +113,28 @@ function loadDataColumn() {
             }
         },
         series: [{
-            name: 'SD',
-            data: res.dataSD
-        }, {
-            name: 'QI',
-            data: res.dataQI
-        }, {
-            name: 'PII',
-            data: res.dataPII
+            data:[
+                [res.nomi],
+                [res.cognomi],
+                [res.telefoni],
+                [res.luoghi],
+                [res.medici],
+                [res.politici],
+                [res.religiosi],
+                [res.email],
+                [res.ssn],
+                [res.targa],
+                [res.patente],
+                [res.passaporto],
+                [res.indirizzoip],
+                [res.indirizzocasa],
+                [res.datadinascita],
+                [res.iban],
+                [res.tradeunion],
+                [res.orientamentosessuale],
+                [res.razza],
+                [res.cap]
+            ]
         }]
     });
 })}
