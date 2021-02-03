@@ -64,20 +64,20 @@ function loadOverall(){
     })
 }
 function loadDataColumn() {
-    chrome.storage.sync.get(['nomi','cognomi','telefoni','luoghi','medici','politici','religiosi','email','ssn','targa','patente','passaporto','indirizzoip','indirizzocasa','datadinascita','iban','tradeunion','orientamentosessuale','razza','cap'], function(res) {
+    chrome.storage.sync.get(['PII','medici','politici','religiosi','tradeunion','orientamentosessuale','razza','cap'], function(res) {
         Highcharts.chart('dc', {
         chart: {
             type: 'column'
         },
         title: {
-            text: 'Dati Personali'
+            text: 'Personal Data'
         },
         xAxis: {
-            categories: ['Nomi', 'Cognome', 'Telefoni', 'Luoghi', 'Medici', 'Politici', 'Religiosi', 'Email', 'Social Number','Targa','Patente','Passaporto','Indirizzo IP','Indirizzo di casa','Data di nascita','Iban','Trade union','Orientamento sessuale','Razza','CAP'],
+            categories: ['PII', 'SD Medical', 'SD Political', 'SD Religious','SD Trade Union','SD Sexual Orientation','SD  Ethnic Group','SD Zip Code'],
             labels: {
                 rotation: -45,
                 style: {
-                    fontSize: '6px',
+                    fontSize: '10px',
                     fontFamily: 'Verdana, sans-serif'
                 }
             }
@@ -85,7 +85,7 @@ function loadDataColumn() {
         yAxis: {
             min: 0,
             title: {
-                text: 'Totale dati personali'
+                text: 'amount of private data typed'
             },
             stackLabels: {
                 enabled: true,
@@ -115,22 +115,10 @@ function loadDataColumn() {
         },
         series: [{
             data:[
-                [res.nomi],
-                [res.cognomi],
-                [res.telefoni],
-                [res.luoghi],
+                [res.PII],
                 [res.medici],
                 [res.politici],
                 [res.religiosi],
-                [res.email],
-                [res.ssn],
-                [res.targa],
-                [res.patente],
-                [res.passaporto],
-                [res.indirizzoip],
-                [res.indirizzocasa],
-                [res.datadinascita],
-                [res.iban],
                 [res.tradeunion],
                 [res.orientamentosessuale],
                 [res.razza],

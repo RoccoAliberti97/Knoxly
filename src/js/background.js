@@ -17,24 +17,12 @@ let structure = {
 chrome.storage.sync.set({"listOfTxt": ""}, function(){})//inizializzo lo storage
 chrome.storage.sync.set({"occurrence": [0,0,0,0,0]}, function(){})//inizializzo lo storage
 chrome.storage.sync.set({"avg": 0}, function(){})//inizializzo lo storage
-chrome.storage.sync.get(['nomi','cognomi','telefoni','luoghi','medici','politici','religiosi','email','ssn','targa','patente','passaporto','indirizzoip','indirizzocasa','datadinascita','iban','tradeunion','orientamentosessuale','razza','cap'], function(res) {
-    if(res.nomi == null && res.cognomi == null && res.telefoni == null && res.luoghi == null && res.medici == null && res.politici == null && res.religiosi == null && res.email == null && res.ssn == null && res.targa == null && res.patente == null && res.passaporto == null && res.indirizzoip == null && res.indirizzocasa == null && res.datadinascita == null && res.iban == null && res.tradeunion == null && res.orientamentosessuale == null && res.razza == null && res.cap == null) {
-        chrome.storage.sync.set({"nomi": 0}, function () {})//inizializzo lo storage
-        chrome.storage.sync.set({"cognomi": 0}, function () {})//inizializzo lo storage
-        chrome.storage.sync.set({"telefoni": 0}, function () {})//inizializzo lo storage
-        chrome.storage.sync.set({"luoghi": 0}, function () {})//inizializzo lo storage
+chrome.storage.sync.get(['PII','medici','politici','religiosi','tradeunion','orientamentosessuale','razza','cap'], function(res) {
+    if(res.PII == null  && res.medici == null && res.politici == null && res.religiosi == null && res.tradeunion == null && res.orientamentosessuale == null && res.razza == null && res.cap == null) {
+        chrome.storage.sync.set({"PII": 0}, function () {})//inizializzo lo storage
         chrome.storage.sync.set({"medici": 0}, function () {})//inizializzo lo storage
         chrome.storage.sync.set({"politici": 0}, function () {})//inizializzo lo storage
         chrome.storage.sync.set({"religiosi": 0}, function () {})//inizializzo lo storage
-        chrome.storage.sync.set({"email": 0}, function () {})//inizializzo lo storage
-        chrome.storage.sync.set({"ssn": 0}, function () {})//inizializzo lo storage
-        chrome.storage.sync.set({"targa": 0}, function () {})//inizializzo lo storage
-        chrome.storage.sync.set({"patente": 0}, function () {})//inizializzo lo storage
-        chrome.storage.sync.set({"passaporto": 0}, function () {})//inizializzo lo storage
-        chrome.storage.sync.set({"indirizzoip": 0}, function () {})//inizializzo lo storage
-        chrome.storage.sync.set({"indirizzocasa": 0}, function () {})//inizializzo lo storage
-        chrome.storage.sync.set({"datadinascita": 0}, function () {})//inizializzo lo storage
-        chrome.storage.sync.set({"iban": 0}, function () {})//inizializzo lo storage
         chrome.storage.sync.set({"tradeunion": 0}, function () {})//inizializzo lo storage
         chrome.storage.sync.set({"orientamentosessuale": 0}, function () {})//inizializzo lo storage
         chrome.storage.sync.set({"razza": 0}, function () {})//inizializzo lo storage
